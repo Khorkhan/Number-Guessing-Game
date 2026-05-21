@@ -9,9 +9,13 @@ def play_game():
     #random number 1 - 100
     secret_number = random.randint(1,100)
     attempts = 0
+    max_attempts = 7
 
     while True:
         try:
+            remaining_attempts = max_attempts - attempts
+            print(f"\n Your guess left {remaining_attempts}")
+
             #input from player
             guess = int(input("Guess the number 1 - 100: "))
             attempts += 1
@@ -27,6 +31,10 @@ def play_game():
                 print(f"\n Correct! the Secret number is {secret_number}")
                 print(f"Your Attempts {attempts}")
                 break
+
+            if attempts >= max_attempts:
+                print("\n Game Over")
+                print(f"Sorry the correct number is: {secret_number}")
 
         except ValueError:
             print("Please enter numbers only!")
